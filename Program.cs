@@ -11,8 +11,7 @@ namespace fivet.ZeroIce
             {
                 using(Ice.Communicator communicator = Ice.Util.initialize(ref args))
                 {
-                    var adapter =
-                        communicator.createObjectAdapterWithEndpoints("TheSystemAdapter", "default -h localhost -p 10000");
+                    var adapter = communicator.createObjectAdapterWithEndpoints("TheSystemAdapter", "default -h localhost -p 10000");
                     adapter.add(new TheSystemImpl(), Ice.Util.stringToIdentity("cl.ucn.disc.pdis.fivet.zeroice.model.TheSystem"));
                     adapter.activate();
                     communicator.waitForShutdown();
