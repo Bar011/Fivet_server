@@ -7,8 +7,7 @@ namespace fivet.ZeroIce
     {
         public static int Main(string[] args)
         {
-            try
-            {
+            try{
                 using(Ice.Communicator communicator = Ice.Util.initialize(ref args))
                 {
                     var adapter = communicator.createObjectAdapterWithEndpoints("TheSystemAdapter", "default -h localhost -p 10000");
