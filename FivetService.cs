@@ -1,10 +1,10 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Fivet.ZeroIce.model;
+using Ice;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using Ice;
-using model;
 
 namespace Fivet.Server
 {
@@ -16,12 +16,20 @@ namespace Fivet.Server
 
         private readonly Communicator _communicator; 
 
-        public FivetService(ILogger<FivetService> logger)
-        {
-                _logger =logger;
-                _communicator = buildCommunicator();
-        }
+        private readonly TheSystemDisp_ _theSystem;
 
+        // The Contracts
+        private readonly ContratosDisp_ _contratos;
+
+
+        public FivetService(ILogger<FivetService> logger, TheSystemDisp_ theSystem, ContratosDisp_ contratos)
+        {
+            _logger = logger;
+            _logger.LogDebug("Building FivetService ..");
+            _theSystem = theSystem;
+            _contratos = contratos;
+            _communicator = buildCommunicator();
+        }
 
         public Task StartAsync(CancellationToken cancellationToken) {
         
