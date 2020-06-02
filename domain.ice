@@ -23,20 +23,19 @@
  */
 
 // https://doc.zeroc.com/ice/3.7/language-mappings/java-mapping/client-side-slice-to-java-mapping/customizing-the-java-mapping
-["java:package:cl.ucn.disc.pdis.fivet.zeroice"]
+["java:package:cl.ucn.disc.pdis.fivet.zeroice" , "cs:namespace:Fivet.ZeroIce"]
 module model {
 
     /**
     * Clase persona (Duenio)
     */
-
+        ["cs:property"]
         class Persona{
-
 
             /**
             * PK
             */
-            int id;
+            int uid;
 
             /**
             *Rut: 18124996K
@@ -47,6 +46,11 @@ module model {
             * Nombre;
             */
             string nombre;
+
+            /**
+            *Apellido;
+            */
+            string apellido;
 
             /**
             * Direccion
@@ -91,12 +95,13 @@ module model {
      /**
      *Clase Ficha
      */
+        ["cs:property"]
         class Ficha {
 
                 /**
                 *PrimaryKey
                 */
-                int id;
+                int uid;
 
                 /**
                 * Numero 2345;
@@ -113,6 +118,12 @@ module model {
                  *Format: ISO_ZONED_DATE_TIME
                  */
                   string fechaNacimiento;
+
+
+                  /**
+                  *
+                  */
+                  string especie;
 
                   /**
                   * Raza
@@ -135,22 +146,19 @@ module model {
                     */
                      TipoPaciente tipoPaciente;
 
-                //Nota de clase: Foto puede ser un atributo de ficha. Puede ser una secuencia
-                //de string.
-
                 }
 
 
             /**
             *Clase Control
             */
-
+                ["cs:property"]
                 class Control{
 
                  /**
                  *PK
                  */
-                 int id;
+                 int uid;
 
                   /**
                   * Fecha:
@@ -185,6 +193,42 @@ module model {
 
 
               }
+
+        /**
+        *Clase Examen
+         */
+         ["cs:property"]
+        class Examen{
+        /**
+        *PK
+        */
+        int uid;
+
+        /**
+        *Nombre del Examen: Radiografia
+        */
+        string nomExamen;
+
+        /**
+        *Fecha del examen: dia/mes/año
+        */
+        string feExamen;
+            
+            
+             }
+
+         /**
+         *Clase Foto
+         */
+         ["cs:property"]
+        class Foto{
+            /**
+             *Foto: URL de la foto
+            */
+            string foto;
+
+
+    }
 
               /**
               * The Contratos.
@@ -231,7 +275,7 @@ module model {
                  * @param numero de ficha a obtener
                  * @return The Persona
                  */
-                 Persona ObtenerPersona(string rut);
+                 Persona obtenerPersona(string rut);
 
               }
 
